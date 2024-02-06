@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>ENVOEMART</title>
+    <link rel="icon" type="image/png" href="{{ asset('path_to_your_favicon/favicon.png') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

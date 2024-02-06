@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BankController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
@@ -21,6 +20,8 @@ use App\Http\Controllers\TransaksiController;
 // Login
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'regist']);
+Route::post('/register', [AuthController::class, 'register'])->name('regist');
 
 // logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -72,7 +73,7 @@ Route::middleware(['auth', 'userAkses:customer'])->group(function(){
     Route::post('/customer/tambahKeKeranjang/{id}', [TransaksiController::class, 'addToCart'])->name('addToCart');
     Route::delete('/customer/keranjang/destroy/{id}', [TransaksiController::class, 'keranjangDestroy'])->name('keranjang.destroy');
     Route::post('/customer/checkout', [TransaksiController::class, 'checkout'])->name('checkout');
-    // Route::get('/customer/transaksi/cetak', [TransaksiController::class, 'cetakTransaksi'])->name('cetak.transaksi');
+    Route::get('/customer/transaksi/cetak', [TransaksiController::class, 'cetakTransaksi'])->name('cetak.transaksi');
 
     // Riwayat transaksi
     Route::get('/customer/riwayat/transaksi', [TransaksiController::class, 'laporanTransaksiHarian'])->name('customer.riwayat.transaksi');

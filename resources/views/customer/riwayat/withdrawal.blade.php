@@ -15,7 +15,7 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Riwayat Tarik Tunai</h4>
                                         <div class="data-tables">
-                                            <table id="table1" class="table table-bordered table-hover">
+                                            <table id="withdrawal-table" class="table table-bordered table-hover">
                                                 <thead class="bg-light text-capitalize">
                                                     <tr>
                                                         <th class="col-1">No.</th>
@@ -30,17 +30,15 @@
                                                         <tr>
                                                             <td>{{ $i + 1 }}</td>
                                                             <td>{{ $withdrawal->created_at }}</td>
-                                                            <td>Rp.
-                                                                {{ number_format($withdrawal->nominal, 0, ',', '.') }},00
-                                                            </td>
+                                                            <td>Rp.{{ number_format($withdrawal->nominal, 0, ',', '.') }},00</td>
                                                             <td>{{ $withdrawal->kode_unik }}</td>
                                                             <td>{{ $withdrawal->status }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
-
                                             </table>
                                         </div>
+                                        <button onclick="printWithdrawalHistory()" class="btn btn-primary mt-3">Cetak</button>
                                     </div>
                                 </div>
                             </div>
@@ -53,4 +51,15 @@
         </div>
     </div>
     <!-- main content area end -->
+
+    <script>
+        function printWithdrawalHistory() {
+            // Mencetak tabel menggunakan JavaScript
+            var printContents = document.getElementById('withdrawal-table').outerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 @endsection

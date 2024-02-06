@@ -64,6 +64,9 @@
                                             Login
                                         </button>
                                         <hr>
+                                        <div class="text-center">
+                                            <a class="small" href="{{ route('regist')}}">Create an Account!</a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

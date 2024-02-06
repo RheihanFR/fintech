@@ -15,7 +15,7 @@
                                     <div class="card-body">
                                         <h4 class="header-title">Riwayat Top Up</h4>
                                         <div class="data-tables">
-                                            <table id="table1" class="table table-bordered table-hover">
+                                            <table id="topup-table" class="table table-bordered table-hover">
                                                 <thead class="bg-light text-capitalize">
                                                     <tr>
                                                         <th class="col-1">No.</th>
@@ -30,16 +30,15 @@
                                                         <tr>
                                                             <td>{{ $i + 1 }}</td>
                                                             <td>{{ $topup->created_at }}</td>
-                                                            <td>Rp.
-                                                                {{ number_format($topup->nominal, 0, ',', '.') }},00</td>
+                                                            <td>Rp.{{ number_format($topup->nominal, 0, ',', '.') }},00</td>
                                                             <td>{{ $topup->kode_unik }}</td>
                                                             <td>{{ $topup->status }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
-
                                             </table>
                                         </div>
+                                        <button onclick="printTopupHistory()" class="btn btn-primary mt-3 float-right">Cetak</button>
                                     </div>
                                 </div>
                             </div>
@@ -52,4 +51,15 @@
         </div>
     </div>
     <!-- main content area end -->
+
+    <script>
+        function printTopupHistory() {
+            // Mencetak tabel menggunakan JavaScript
+            var printContents = document.getElementById('topup-table').outerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 @endsection

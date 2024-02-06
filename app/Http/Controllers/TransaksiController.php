@@ -116,6 +116,7 @@ class TransaksiController extends Controller
             $transaksi->kuantitas = $selectedProduct->jumlah_produk;
             $transaksi->tgl_transaksi = now();
             $transaksi->invoice = $invoice;
+            $transaksi->status = 'paid';
             $transaksi->save();
 
             $produk = Produk::find($selectedProduct->id_produk);
