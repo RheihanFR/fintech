@@ -13,6 +13,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span style="color: black; margin-right: 10px;">{{ auth()->user()->nama }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg')}}">
             </a>
 
